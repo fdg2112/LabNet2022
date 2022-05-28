@@ -94,7 +94,7 @@ namespace TP1
             for (int i = 5; i < 10; i++)
             {
                 Console.Clear();
-                Console.WriteLine($"Ingrese cantidad de pasajeros de 0 a 4 para el Colectivo Nº {j}");
+                Console.WriteLine($"Ingrese cantidad de pasajeros de 0 a 4 para el Taxi Nº {j}");
                 int cantidad;
                 bool cantidadCorrecta = false;
                 do
