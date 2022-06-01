@@ -26,36 +26,30 @@ namespace TP2
             }
         }
 
-        public static void PuntoDos()
+        public static string PuntoDos(string valor1, string valor2)
         {
             try
             {
-                Console.WriteLine("Ingrese dividendo");
-                double num1 = Convert.ToDouble(Console.ReadLine());
-                Console.WriteLine("Ingrese divisor");
-                double num2 = Convert.ToDouble(Console.ReadLine());
+                var num1 = Convert.ToDouble(valor1);
+                var num2 = Convert.ToDouble(valor2);
                 if (num2 == 0)
                 {
                     throw new DivideByZeroException();
                 }
                 double resultado = num1 / num2;
-                Console.WriteLine($"El resultado es {resultado}");
+                return $"El resultado es {resultado}";
             }
             catch (DivideByZeroException ex)
             {
-                Console.WriteLine("Sólo Goku puede dividir por cero!!!");
-                Console.WriteLine(Environment.NewLine);
-                Console.WriteLine(ex.Message);
+                return "Sólo Goku puede dividir por cero!!!";
             }
             catch (FormatException ex)
             {
-                Console.WriteLine("¡Seguro Ingreso una letra o no ingreso nada!");
-                Console.WriteLine(Environment.NewLine);
-                Console.WriteLine(ex.Message);
+                return "¡Seguro Ingreso una letra o no ingreso nada!";
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ocurrió el siguiente error: {ex.Message}");
+                return $"Ocurrió el siguiente error: {ex.Message}";
             }
         }
     }
