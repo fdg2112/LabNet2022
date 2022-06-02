@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TP2
+namespace TP2Logica
 {
     public class Logic
     {
