@@ -63,6 +63,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TP2Logica\TP2Logica.csproj">
+      <Project>{816870A2-8CB1-42F5-A694-6EC94DB9368F}</Project>
+      <Name>TP2Logica</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TP2\TP2.csproj">
       <Project>{28301D31-A5E1-480D-935A-BEE99D48023A}</Project>
       <Name>TP2</Name>
