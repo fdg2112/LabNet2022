@@ -11,9 +11,7 @@ namespace TP2
     {
         static void Main(string[] args)
         {
-            bool salir = false;
-
-            while (!salir)
+            do
             {
                 try
                 {
@@ -26,17 +24,16 @@ namespace TP2
                     Console.WriteLine("Ingresa 5 para salir");
                     int opcion = Convert.ToInt32(Console.ReadLine());
                     Console.Clear();
-                    salir = Menu.Opciones(opcion);
+                    Menu.Opciones(opcion);
                     Console.WriteLine(Environment.NewLine);
-                    Console.WriteLine("Presione una tecla para volver al menú anterior...");
+                    Console.WriteLine("Presione una tecla para volver al menú anterior o Escape para salir...");
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine("Detalle del error: " + ex.Message);
-                    Console.WriteLine("Presiona cualquier tecla para continuar...");
+                    Console.WriteLine("Presiona cualquier tecla para continuar o Escape para salir......");
                 }
-                Console.ReadKey();
-            }
+            } while (Console.ReadKey().Key != ConsoleKey.Escape);
         }
     }
 }

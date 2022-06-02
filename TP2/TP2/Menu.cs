@@ -9,13 +9,13 @@ namespace TP2
 {
     public class Menu
     {
-        public static bool Opciones(int opcion)
+        public static void Opciones(int opcion)
         {
             switch (opcion)
             {
                 case 1:
                     PruebaExcepciones.PuntoUno();
-                    return false;
+                    break;
                 case 2:
                     Console.WriteLine("Ingrese dividendo");
                     string valor1 = Console.ReadLine();
@@ -23,16 +23,16 @@ namespace TP2
                     string valor2 = Console.ReadLine();
                     var res = PruebaExcepciones.PuntoDos(valor1, valor2);
                     Console.WriteLine(res);
-                    return false;
+                    break;
                 case 3:
                     Logic.PuntoTres();
-                    return false;
+                    break;
                 case 4:
                     Logic.PuntoCuatro();
-                    return false;
+                    break;
                 case 5:
-                    Console.WriteLine("Saliendo... Presione cualquier tecla continuar...");
-                    return true;
+                    Environment.Exit(0);
+                    break; 
                 default:
                     throw new ArgumentOutOfRangeException();
             }
