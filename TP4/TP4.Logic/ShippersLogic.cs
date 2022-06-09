@@ -11,19 +11,29 @@ namespace TP4.Logic
     {
         public void Add(Shippers newElement)
         {
+            if (string.IsNullOrEmpty(newElement.CompanyName)) throw new Exception("El campo Nombre de la empresa no puede estar vacio");
+            if (newElement.CompanyName.Length > 40 || newElement.Phone.Length > 24) throw new Exception("Uno o más campos han sobrepasado el límite de caracteres permitidos");
             context.Shippers.Add(newElement);
             context.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            var elementToRemove = context.Shippers.Find(id);
-            context.Shippers.Remove(elementToRemove);
-            context.SaveChanges();
+            try
+            {
+                var elementToRemove = context.Shippers.Find(id);
+                context.Shippers.Remove(elementToRemove);
+                context.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw new Exception("No se ha podido eliminar");
+            }
         }
 
         public void Update(Shippers element)
         {
+            if(element.Phone.Length > 24) throw new Exception("Se ha sobrepasado el límite de caracteres permitidos");
             var shippersUpdate = context.Shippers.Find(element.ShipperID);
             shippersUpdate.Phone = element.Phone;
             context.SaveChanges();

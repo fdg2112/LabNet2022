@@ -13,8 +13,12 @@ namespace TP4
         {
             SuppliersLogic supplierLogic = new SuppliersLogic();
             Console.WriteLine("Ingrese ID del Proveedor a Eliminar");
-            int id = Convert.ToInt32(Console.ReadLine());            
-            if (supplierLogic.Finded(id)) supplierLogic.Delete(id);
+            int id = Convert.ToInt32(Console.ReadLine());
+            if (supplierLogic.Finded(id))
+            {
+                supplierLogic.Delete(id);
+                Console.WriteLine("Eliminado...");
+            }
             else Console.WriteLine("ID no encontrado");
         }
 
@@ -23,7 +27,11 @@ namespace TP4
             ShippersLogic shippersLogic = new ShippersLogic();
             Console.WriteLine("Ingrese ID del Proveedor a Eliminar");
             int id = Convert.ToInt32(Console.ReadLine());
-            if (shippersLogic.Finded(id)) shippersLogic.Delete(id);
+            if (shippersLogic.Finded(id))
+            {
+                shippersLogic.Delete(id);
+                Console.WriteLine("Eliminado...");
+            }
             else Console.WriteLine("ID no encontrado");
         }
     }

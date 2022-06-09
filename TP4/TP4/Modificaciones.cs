@@ -21,16 +21,10 @@ namespace TP4
                 {
                     Console.WriteLine("Modificar nombre de contacto de la empresa");
                     string contactName = Console.ReadLine();
-                    if (contactName.Length > 30)
-                    {
-                        throw new Exception("Se ha sobrepasado el limite de 30 caracteres en el campo Nombre de Contacto");
-                    }
+                    if (contactName.Length > 30) throw new Exception("Se ha sobrepasado el limite de 30 caracteres");
                     Console.WriteLine("Ingrese nuevo telefono");
                     string phone = Console.ReadLine();
-                    if (phone.Length > 24)
-                    {
-                        throw new Exception("Se ha sobrepasado el limite de 24 caracteres en el campo Telefono");
-                    }
+                    if (phone.Length > 24) throw new Exception("Se ha sobrepasado el limite de 24 caracteres");
                     suppliersLogic.Update(new Suppliers
                     {
                         SupplierID = id,
@@ -60,10 +54,6 @@ namespace TP4
                 {
                     Console.WriteLine("Ingrese nuevo telefono");
                     string phone = Console.ReadLine();
-                    if (phone.Length > 24)
-                    {
-                        throw new Exception("Se ha sobrepasado el limite de 24 caracteres en el campo Telefono");
-                    }
                     shippersLogic.Update(new Shippers
                     {
                         ShipperID = id,
