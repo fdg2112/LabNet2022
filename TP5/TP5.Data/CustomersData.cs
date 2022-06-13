@@ -9,24 +9,24 @@ namespace TP5.Data
 {
     public static class CustomersData
     {
-        public static IQueryable<Customers> GetAll()
+        public static List<Customers> GetAll()
         { 
             var db = new NorthwindContext();
-            return from customer in db.Customers
+            return (from customer in db.Customers
                         orderby customer.CompanyName ascending
-                        select customer;
+                        select customer).ToList();
         }
 
-        public static IQueryable<Customers> GetFromWA()
+        public static List<Customers> GetFromWA()
         {
             var db = new NorthwindContext();
-            return db.Customers.Where(c => c.Region == "WA");
+            return db.Customers.Where(c => c.Region == "WA").ToList();
         }
 
-        public static IQueryable<Customers> GetNames()
+        public static List<Customers> GetNames()
         {
             var db = new NorthwindContext();
-            return db.Customers.OrderBy(c => c.ContactName);
+            return db.Customers.OrderBy(c => c.ContactName).ToList();
         }
 
         public static void GetFromWaAnd1997()
@@ -47,16 +47,17 @@ namespace TP5.Data
                             order.OrderDate
                         };
 
+            //No he logrado todavía retornar la query
             foreach (var item in query)
             {
                 Console.WriteLine($"Customer: {item.CompanyName} - OrderID: {item.OrderID} - OrderDate: {item.OrderDate}");
             }
         }
 
-        public static IQueryable<Customers> GetFromWaTop3()
+        public static List<Customers> GetFromWaTop3()
         {
             var db = new NorthwindContext();
-            return db.Customers.Where(c => c.Region == "WA").Take(3);
+            return db.Customers.Where(c => c.Region == "WA").Take(3).ToList();
         }
     }
 }

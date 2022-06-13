@@ -67,7 +67,7 @@
       <Name>TP5.Entities</Name>
     </ProjectReference>
     <ProjectReference Include="..\TP5.Logic\TP5.Logic.csproj">
-      <Project>{C16078F8-D954-4171-9A7B-76A8F91B8D19}</Project>
+      <Project>{b7d9f821-50c7-456d-b8cc-9d9c074c3212}</Project>
       <Name>TP5.Logic</Name>
     </ProjectReference>
   </ItemGroup>

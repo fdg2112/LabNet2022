@@ -9,40 +9,40 @@ namespace TP5.Data
 {
     public static class ProductsData
     {
-        public static IQueryable<Products> GetStockZero()
+        public static List<Products> GetStockZero()
         {
             var db = new NorthwindContext();
-            return from product in db.Products
+            return (from product in db.Products
                    where product.UnitsInStock == 0
-                   select product;
+                   select product).ToList();
         }
 
-        public static IQueryable<Products> GetUnitPriceGreaterThan30()
+        public static List<Products> GetUnitPriceGreaterThan3()
         {
             var db = new NorthwindContext();
-            return db.Products.Where(p => p.UnitsInStock > 0 && p.UnitPrice > 30)
-                                .OrderBy(c => c.ProductName);
+            return db.Products.Where(p => p.UnitsInStock > 0 && p.UnitPrice > 3)
+                                .OrderBy(c => c.ProductName).ToList();
         }
 
-        public static IQueryable<Products> GetFirstWithId789()
+        public static List<Products> GetFirstWithId789()
         {
             var db = new NorthwindContext();
-            return db.Products.Where(p => p.ProductID == 789);
+            return db.Products.Where(p => p.ProductID == 789).ToList();
         }
 
-        public static IQueryable<Products> GetProductsByName()
+        public static List<Products> GetProductsByName()
         {
             var db = new NorthwindContext();
-            return from product in db.Products
+            return (from product in db.Products
                    orderby product.ProductName ascending
-                   select product;
+                   select product).ToList();
         }
 
-        public static IQueryable<Products> GetProductsPerUnitInStock()
+        public static List<Products> GetProductsPerUnitInStock()
         {
             var db = new NorthwindContext();
             return db.Products.Where(p => p.UnitsInStock > 0)
-                                .OrderByDescending(c => c.UnitsInStock);
+                                .OrderByDescending(c => c.UnitsInStock).ToList();
         }
 
     }
