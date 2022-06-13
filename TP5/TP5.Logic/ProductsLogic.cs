@@ -7,7 +7,7 @@ using TP5.Entities;
 
 namespace TP5.Data
 {
-    public static class ProductsData
+    public static class ProductsLogic
     {
         public static List<Products> GetStockZero()
         {
@@ -45,5 +45,12 @@ namespace TP5.Data
                                 .OrderByDescending(c => c.UnitsInStock).ToList();
         }
 
+        public static List<Products> GetAll()
+        {
+            var db = new NorthwindContext();
+            return (from product in db.Products
+                    orderby product.ProductID ascending
+                    select product).ToList();
+        }
     }
 }

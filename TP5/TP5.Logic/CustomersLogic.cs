@@ -7,7 +7,7 @@ using TP5.Entities;
 
 namespace TP5.Data
 {
-    public static class CustomersData
+    public static class CustomersLogic
     {
         public static List<Customers> GetAll()
         { 
@@ -29,29 +29,24 @@ namespace TP5.Data
             return db.Customers.OrderBy(c => c.ContactName).ToList();
         }
 
-        public static void GetFromWaAnd1997()
+        public static List<CustomersOrders> GetFromWaAnd1997()
         {
             var db = new NorthwindContext();
 
             
-            var query = from customer in db.Customers
-                        join order in db.Orders
-                        on new { customer.CustomerID }
-                        equals new { order.CustomerID }
-                        where customer.Region == "WA" && order.OrderDate > new DateTime(1997,1,1)
-                        select new {
-                            customer.CompanyName,
-                            customer.ContactName,
-                            order.CustomerID,
-                            order.OrderID,
-                            order.OrderDate
-                        };
-
-            //No he logrado todavía retornar la query
-            foreach (var item in query)
-            {
-                Console.WriteLine($"Customer: {item.CompanyName} - OrderID: {item.OrderID} - OrderDate: {item.OrderDate}");
-            }
+            return (from c in db.Customers
+                        join o in db.Orders
+                        on c.CustomerID
+                        equals o.CustomerID
+                        where c.Region == "WA" && o.OrderDate > new DateTime(1997,1,1)
+                        select new CustomersOrders
+                        {                       
+                            CustomerID = c.CustomerID,
+                            CompanyName = c.CompanyName,
+                            ContactName = c.ContactName,
+                            OrderID = o.OrderID,
+                            OrderDate = o.OrderDate
+                        }).ToList();
         }
 
         public static List<Customers> GetFromWaTop3()
