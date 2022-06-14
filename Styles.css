@@ -1,0 +1,14 @@
+#form {
+    font-family: sans-serif;
+    background-color: gray;
+    margin: 20px;
+    padding: 20px;
+    max-width: 30%;
+}
+
+.form-group {
+    margin: 20px;
+}
+.form-check {
+    margin: 20px;
+}
