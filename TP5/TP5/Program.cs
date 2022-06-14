@@ -21,8 +21,19 @@ namespace TP5
             Ejercicio8();
             Ejercicio9();
             Ejercicio10();
+            Ejercicio11();
             Ejercicio12();
+            Ejercicio13();
+        }
 
+        private static void Ejercicio13()
+        {
+            Console.Clear();
+            Console.WriteLine("Ejercicio 13. Query para devolver los customer con la cantidad de ordenes asociadas");
+            Console.WriteLine(Environment.NewLine);
+            var query = CustomersLogic.GetOrdersPerCustomer();
+            foreach (var item in query) Console.WriteLine($"CustomerID: {item.CustomerID} - Company Name: {item.CompanyName} - Quantity: {item.Quantity}");
+            Console.ReadLine();
         }
 
         private static void Ejercicio12()
@@ -32,6 +43,15 @@ namespace TP5
             Console.WriteLine(Environment.NewLine);
             var query = ProductsLogic.GetAll();
             Console.WriteLine(query.First().ProductName);
+            Console.ReadLine();
+        }
+        private static void Ejercicio11()
+        {
+            Console.Clear();
+            Console.WriteLine("Ejercicio 11. Query para devolver las distintas categorías asociadas a los productos");
+            Console.WriteLine(Environment.NewLine);
+            var query = ProductsLogic.GetCategories();
+            foreach (var item in query) Console.WriteLine($"CategoryID: {item.CategoryID} - Category Name: {item.CategoryName}");
             Console.ReadLine();
         }
 

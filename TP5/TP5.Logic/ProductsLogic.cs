@@ -52,5 +52,29 @@ namespace TP5.Data
                     orderby product.ProductID ascending
                     select product).ToList();
         }
+
+        public static List<CategoriesProducts> GetCategories()
+        {
+            var db = new NorthwindContext();
+            return db.Categories.GroupJoin(
+                db.Products,
+                c => c.CategoryID,
+                p => p.CategoryID,
+                (c, p) => new CategoriesProducts
+                {
+                    CategoryID = c.CategoryID,
+                    CategoryName = c.CategoryName.ToString()
+                }).ToList();
+            //return (from c in db.Categories
+            //        join p in db.Products
+            //        on c.CategoryID
+            //        equals p.CategoryID
+            //        select new CategoriesProducts
+            //        {
+            //            CategoryID = c.CategoryID,
+            //            ProductName = p.ProductName,
+            //            CategoryName = c.CategoryName
+            //        }).ToList();
+        }
     }
 }

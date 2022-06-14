@@ -32,8 +32,6 @@ namespace TP5.Data
         public static List<CustomersOrders> GetFromWaAnd1997()
         {
             var db = new NorthwindContext();
-
-            
             return (from c in db.Customers
                         join o in db.Orders
                         on c.CustomerID
@@ -53,6 +51,22 @@ namespace TP5.Data
         {
             var db = new NorthwindContext();
             return db.Customers.Where(c => c.Region == "WA").Take(3).ToList();
+        }
+
+        public static List<CustomersOrders> GetOrdersPerCustomer()
+        {
+            var db = new NorthwindContext();
+            return (from c in db.Customers
+                    join o in db.Orders
+                    on c.CustomerID
+                    equals o.CustomerID
+                    group c by new {c.CustomerID, c.CompanyName} into g
+                    select new CustomersOrders
+                    {
+                        CustomerID = g.Key.CustomerID,
+                        CompanyName = g.Key.CompanyName,
+                        Quantity = g.Count()
+                    }).ToList();
         }
     }
 }
