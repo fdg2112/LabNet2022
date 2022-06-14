@@ -6,7 +6,6 @@
 <title>Page Title</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" media="screen" href="Styles.css" />
-<script src="Code.js"></script>
 </head>
 <body>
     <h1>CONTACTO</h1>
@@ -34,7 +33,15 @@
               <label for="start">Fecha de nacimiento:</label>
             </div>
             <div class="col-75">
-                <input type="date" id="start" name="trip-start" value="2022-01-01" min="1900-01-01" max="2022-12-31">
+                <input type="date" id="birthDate" value="2022-01-01" min="1900-01-01" max="2022-12-31">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-25">
+              <h2 id="age"></h2>
+            </div>
+            <div class="col-75">
+              
             </div>
           </div>
           <div class="row">
@@ -54,5 +61,6 @@
           </div>
         </form>
       </div>
+  <script src="Code.js"></script>
 </body>
 </html>
