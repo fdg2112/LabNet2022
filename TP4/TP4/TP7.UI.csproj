@@ -63,13 +63,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TP4.Entities\TP4.Entities.csproj">
+    <ProjectReference Include="..\TP4.Entities\TP7.Entities.csproj">
       <Project>{AC568C33-DA62-4932-A86D-E44328EC6243}</Project>
-      <Name>TP4.Entities</Name>
+      <Name>TP7.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TP4.Logic\TP4.Logic.csproj">
+    <ProjectReference Include="..\TP4.Logic\TP7.Logic.csproj">
       <Project>{D8B08A3C-5A9E-4364-BC4D-237375E76140}</Project>
-      <Name>TP4.Logic</Name>
+      <Name>TP7.Logic</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
