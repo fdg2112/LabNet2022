@@ -11,7 +11,7 @@
     <h1>CONTACTO</h1>
     <h2>Completa tus datos</h2>
     <div class="container">
-        <form>
+        <form action="#" id="form">
           <div class="row">
             <div class="col-25">
               <label for="fname">Nombre:</label>
@@ -38,10 +38,10 @@
           </div>
           <div class="row">
             <div class="col-25">
-              <h2 id="age"></h2>
+              <label for="lname">Edad:</label>
             </div>
             <div class="col-75">
-              
+              <input type="text" name="age" id="age" style="width: 40px;" readonly>
             </div>
           </div>
           <div class="row">
@@ -57,7 +57,12 @@
             <label class="form-check-label" for="exampleRadios3"> Otro </label>
           </div>
           <div class="row">
-            <input type="submit" value="Submit">
+            <div class="col-25">
+              <input type="submit" id="btn-submit" value="Enviar">
+            </div>
+            <div class="col-75">
+              <input type="button" id="btn-clean" value="Limpiar formulario">
+            </div>
           </div>
         </form>
       </div>

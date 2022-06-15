@@ -1,6 +1,3 @@
-const birthDate = document.getElementById("birthDate");
-const age = document.getElementById("age");
-
 const getAge = (birthDate) =>{
     const actualDate = new Date();
     const actualYear = parseInt(actualDate.getFullYear());
@@ -14,9 +11,9 @@ const getAge = (birthDate) =>{
     let age = actualYear - birthYear;
     if (actualMonth < birthMonth) {
         age--;
-    } else if (actualMonth == birthMonth){
+    } else if (actualMonth === birthMonth){
         if (actualDay < birthDay) {
-            edad--;
+            age--;
         }
     }
 
@@ -24,9 +21,32 @@ const getAge = (birthDate) =>{
 }
 
 window.addEventListener('load',function(){
-    birthDate.addEventListener('change',function(){
+    document.getElementById("birthDate").addEventListener('change',function(){
         if (this.value){
-            age.innerText=`Tu edad es: ${this.value} años`
+            document.getElementById("age").value=getAge(this.value);
         }
     })    
+});
+
+document.getElementById("btn-submit").addEventListener('click',()=>{
+    if (document.getElementById('fname').value == null || document.getElementById('fname').value =="") {
+        alert("El campo Nombre no puede estar vacío.");
+        document.getElementById('fname').focus();
+        return false;
+    }
+    if (document.getElementById('lname').value == null || document.getElementById('lname').value =="") {
+        alert("El campo Apellido no puede estar vacío.");
+        document.getElementById('lname').focus();
+        return false;
+    }
+    if (document.getElementById('age').value == null || document.getElementById('age').value =="") {
+        alert("Debes introducir la Fecha de Nacimiento.");
+        document.getElementById('birthDate').focus();
+        return false;
+    }
+    return true;    
+});
+
+document.getElementById("btn-clean").addEventListener('click',()=>{
+    document.getElementById("form").reset();
 });
