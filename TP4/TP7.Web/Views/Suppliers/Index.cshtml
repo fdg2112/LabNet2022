@@ -1,4 +1,6 @@
-﻿@{
+﻿@model List<TP7.Web.Models.SuppliersView>
+
+@{
     ViewBag.Title = "Suppliers Page";
 }
 
@@ -12,6 +14,32 @@
 <body>
     <div>
         <h1>Proveedores</h1>
+        @Html.ActionLink("Agregar nuevo proveedor", "Insert", "Suppliers")
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre de la empresa</th>
+                    <th scope="col">Nombre de contato</th>
+                    <th scope="col">Telefono</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var supplier in Model)
+                {
+                    <tr>
+                        <td scope="row">@supplier.SupplierID</td>
+                        <td scope="row">@supplier.CompanyName</td>
+                        <td scope="row">@supplier.ContactName</td>
+                        <td scope="row">@supplier.Phone</td>
+                        <td scope="row">
+                            @Html.ActionLink("Editar", "Edit", new { id = supplier.SupplierID }) |
+                            @Html.ActionLink("Borrar", "Delete", new { id = supplier.SupplierID }, new { onclick = "return confirm ('Sguro de eliminar?')" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 </body>
 </html>

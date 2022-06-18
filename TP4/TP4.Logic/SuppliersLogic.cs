@@ -14,10 +14,6 @@ namespace TP4.Logic
             try
             {
                 if (string.IsNullOrEmpty(newElement.CompanyName)) throw new Exception("El campo Nombre de la empresa no puede estar vacio");
-                if (newElement.CompanyName.Length > 40 || newElement.ContactName.Length > 30 || newElement.ContactTitle.Length > 30 ||
-                    newElement.Address.Length > 60 || newElement.City.Length > 15 || newElement.Region.Length > 15 ||
-                    newElement.PostalCode.Length > 10 || newElement.Country.Length > 15 || newElement.Phone.Length > 24 || newElement.Fax.Length > 24)
-                    throw new Exception("Uno o más campos han sobrepasado el límite de caracteres");
                 context.Suppliers.Add(newElement);
                 context.SaveChanges();
             }
@@ -46,9 +42,17 @@ namespace TP4.Logic
             try
             {
                 var supliersUpdate = context.Suppliers.Find(element.SupplierID);
-                if (element.ContactName.Length > 30 || element.Phone.Length > 24) throw new Exception("Uno o más campos han sobrepasado el límite de caracteres ");
-                supliersUpdate.ContactName = element.ContactName;
-                supliersUpdate.Phone = element.Phone;
+                if (element.CompanyName != null) supliersUpdate.CompanyName = element.CompanyName;
+                if (element.ContactName != null) supliersUpdate.ContactName = element.ContactName;
+                if (element.ContactTitle != null) supliersUpdate.ContactTitle = element.ContactTitle;
+                if (element.Address != null) supliersUpdate.Address = element.Address;
+                if (element.City != null) supliersUpdate.City = element.City;
+                if (element.Region != null) supliersUpdate.Region = element.Region;
+                if (element.PostalCode != null) supliersUpdate.PostalCode = element.PostalCode;
+                if (element.Country != null) supliersUpdate.Country = element.Country;
+                if (element.Phone != null) supliersUpdate.Phone = element.Phone;
+                if (element.Fax != null) supliersUpdate.Fax = element.Fax;
+                if (element.HomePage != null) supliersUpdate.HomePage = element.HomePage;
                 context.SaveChanges();
             }
             catch (Exception)
