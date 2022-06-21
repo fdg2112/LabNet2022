@@ -18,6 +18,5 @@ namespace TP4.Data
             var pokes = JsonConvert.DeserializeObject<PokesDTO>(json);
             return pokes;
         }
-
     }
 }
