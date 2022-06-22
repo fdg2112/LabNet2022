@@ -10,10 +10,11 @@ namespace TP4.Logic
 {
     public class PokeLogic
     {
-        public List<PokesDTO> GetAll()
+        public List<PokemonDTO> GetAll()
         {
             PokeQuery pokes = new PokeQuery();
-            return pokes.ToList();
+
+            return pokes.GetPokes().Result;
         }
     }
 }

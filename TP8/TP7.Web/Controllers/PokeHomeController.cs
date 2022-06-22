@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace TP7.Web.Controllers
 {
-    public class HomeController : Controller
+    public class PokeHomeController : Controller
     {
         public ActionResult Index()
         {

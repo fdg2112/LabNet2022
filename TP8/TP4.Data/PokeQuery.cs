@@ -11,12 +11,25 @@ namespace TP4.Data
 {
     public class PokeQuery
     {
-        public async Task<PokesDTO> GetPokes()
+        public async Task<List<PokemonDTO>> GetPokes()
         {
-            HttpClient client = new HttpClient();
-            var json = await client.GetStringAsync("https://pokeapi.co/api/v2/pokemon/");
-            var pokes = JsonConvert.DeserializeObject<PokesDTO>(json);
-            return pokes;
+            try
+            {
+                HttpClient client = new HttpClient();
+                var response = client.GetAsync("https://pokeapi.co/api/v2/pokemon/").Result;
+                var pokes = JsonConvert.DeserializeObject<PokeListaDTO>(await response.Content.ReadAsStringAsync());
+                var pokeList = pokes.Pokemones.Select(p => new PokemonDTO
+                {
+                    Name = p.Name,
+                    Url = p.Url
+                }).ToList();
+                return pokeList;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
         }
     }
 }

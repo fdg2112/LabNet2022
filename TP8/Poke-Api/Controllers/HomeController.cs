@@ -10,7 +10,7 @@ namespace Poke_Api.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Poke Home Page";
 
             return View();
         }

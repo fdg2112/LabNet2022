@@ -11,12 +11,12 @@ namespace Service
 {
     public class PokeService 
     {
-        PokeQuery pokeQuery = new PokeQuery();
-        public List<PokesDTO> GetPokes()
+        PokeLogic pokeLogic = new PokeLogic();
+        public List<PokemonDTO> GetPokemones()
         {
             try
             {
-                return pokeQuery.GetPokes();
+                return pokeLogic.GetAll();
             }
             catch (Exception e)
             {

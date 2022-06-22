@@ -128,12 +128,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PokeHomeController.cs" />
+    <Compile Include="Controllers\PokeController.cs" />
     <Compile Include="Controllers\ShippersController.cs" />
     <Compile Include="Controllers\SuppliersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\PokesView.cs" />
     <Compile Include="Models\SuppliersView.cs" />
     <Compile Include="Models\ShippersView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -182,6 +184,7 @@
     <Content Include="Views\Suppliers\Insert.cshtml" />
     <Content Include="Views\Shippers\Edit.cshtml" />
     <Content Include="Views\Suppliers\Edit.cshtml" />
+    <Content Include="Views\Poke\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -200,6 +203,14 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Poke-Api\Poke-Api.csproj">
+      <Project>{ACA4CD2B-DA30-4A15-A173-91111B0F26BA}</Project>
+      <Name>Poke-Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Service\Service.csproj">
+      <Project>{39500174-993F-4460-8CE5-59322A9AFE59}</Project>
+      <Name>Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TP4.Entities\Entities.csproj">
       <Project>{ac568c33-da62-4932-a86d-e44328ec6243}</Project>
       <Name>Entities</Name>

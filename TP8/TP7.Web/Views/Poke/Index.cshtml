@@ -1,0 +1,25 @@
+﻿@model IEnumerable<TP7.Web.Models.PokesView>
+
+@{
+    ViewBag.Title = "Poke Page";
+}
+
+<h2>Listado de Pokemons</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            <label class="control-label col-md-2">Nombre:</label>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+        </tr>
+    }
+
+</table>
