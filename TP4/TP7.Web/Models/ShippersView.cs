@@ -14,7 +14,7 @@ namespace TP7.Web.Models
         [Display(Name = "Nombre de la empresa")]
         [Required]
         [StringLength(40)]
-        [RegularExpression("^[a-zA-Z]+$", ErrorMessage = "Solo letras en este campo")]
+        [RegularExpression("^[a-zA-Z ]+$", ErrorMessage = "Solo letras en este campo")]
         public string CompanyName { get; set; }
 
         [Display(Name = "Telefono")]

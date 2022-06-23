@@ -18,11 +18,11 @@ namespace TP7.Web.Models
 
         [Display(Name = "Nombre del contacto")]
         [StringLength(30)]
-        [RegularExpression("^[a-zA-Z]+$", ErrorMessage = "Solo letras en este campo")]
+        [RegularExpression("^[a-zA-Z ]+$", ErrorMessage = "Solo letras en este campo")]
         public string ContactName { get; set; }
 
         [Display(Name = "Titulo del contacto")]
-        [RegularExpression("^[a-zA-Z]+$", ErrorMessage = "Solo letras en este campo")]
+        [RegularExpression("^[a-zA-Z ]+$", ErrorMessage = "Solo letras en este campo")]
         [StringLength(30)]
         public string ContactTitle { get; set; }
 
@@ -31,12 +31,12 @@ namespace TP7.Web.Models
         public string Address { get; set; }
 
         [Display(Name = "Ciudad")]
-        [RegularExpression("^[a-zA-Z]+$", ErrorMessage = "Solo letras en este campo")]
+        [RegularExpression("^[a-zA-Z ]+$", ErrorMessage = "Solo letras en este campo")]
         [StringLength(15)]
         public string City { get; set; }
 
         [Display(Name = "Region")]
-        [RegularExpression("^[a-zA-Z]+$", ErrorMessage = "Solo letras en este campo")]
+        [RegularExpression("^[a-zA-Z ]+$", ErrorMessage = "Solo letras en este campo")]
         [StringLength(15)]
         public string Region { get; set; }
 
@@ -45,7 +45,7 @@ namespace TP7.Web.Models
         public string PostalCode { get; set; }
  
         [Display(Name = "Pais")]
-        [RegularExpression("^[a-zA-Z]+$", ErrorMessage = "Solo letras en este campo")]
+        [RegularExpression("^[a-zA-Z ]+$", ErrorMessage = "Solo letras en este campo")]
         [StringLength(15)]
         public string Country { get; set; }
 

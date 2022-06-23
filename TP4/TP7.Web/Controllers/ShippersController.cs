@@ -90,5 +90,45 @@ namespace TP7.Web.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
+
+        public ActionResult InsertOrEdit()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult InsertOrEdit(ShippersView shippersView, int id = 0)
+        {
+            try
+            {
+                if (shippersLogic.Finded(id))
+                {
+                    Shippers shipperEntity = new Shippers
+                    {
+                        ShipperID = id,
+                        CompanyName = shippersView.CompanyName,
+                        Phone = shippersView.Phone
+                    };
+                    shippersLogic.Update(shipperEntity);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    Shippers shipperEntity = new Shippers
+                    {
+                        CompanyName = shippersView.CompanyName,
+                        Phone = shippersView.Phone
+                    };
+                    if (!ModelState.IsValid) return RedirectToAction("Insert");
+                    shippersLogic.Add(shipperEntity);
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index", "Error");
+            }
+        }
+
     }
 }

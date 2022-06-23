@@ -14,7 +14,7 @@
 <body>
     <div>
         <h1>Transportistas</h1>
-        @Html.ActionLink("Agregar nuevo transportista","Insert","Shippers")
+        @Html.ActionLink("Agregar nuevo transportista", "InsertOrEdit", "Shippers")
         <table class="table">
             <thead>
                 <tr>
@@ -32,7 +32,7 @@
                         <td scope="row">@shipper.CompanyName</td>
                         <td scope="row">@shipper.Phone</td>
                         <td scope="row">
-                            @Html.ActionLink("Editar", "Edit", new { id = shipper.ShipperID }) |
+                            @Html.ActionLink("Editar", "InsertOrEdit", new { id = shipper.ShipperID }) |
                             @Html.ActionLink("Borrar", "Delete", new { id = shipper.ShipperID }, new { onclick = "return confirm ('Sguro de eliminar?')"})
                         </td>
                     </tr>
