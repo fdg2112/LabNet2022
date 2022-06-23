@@ -43,6 +43,7 @@ namespace TP7.Web.Controllers
                     CompanyName = shippersView.CompanyName,
                     Phone = shippersView.Phone
                 };
+                if (!ModelState.IsValid) return RedirectToAction("Insert");
                 shippersLogic.Add(shipperEntity);
                 return RedirectToAction("Index");
             }

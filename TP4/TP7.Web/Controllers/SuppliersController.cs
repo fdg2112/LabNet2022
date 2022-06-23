@@ -60,6 +60,7 @@ namespace TP7.Web.Controllers
                     HomePage = suppliersView.HomePage,
                     Fax = suppliersView.Fax
                 };
+                if (!ModelState.IsValid) return RedirectToAction("Insert");
                 suppliersLogic.Add(supplierEntity);
                 return RedirectToAction("Index");
             }
