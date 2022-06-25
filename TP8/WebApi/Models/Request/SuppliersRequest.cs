@@ -1,4 +1,4 @@
-namespace TP4.Entities
+namespace WebApi.Models.Request
 {
     public partial class SuppliersRequest
     {

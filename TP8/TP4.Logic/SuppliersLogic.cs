@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TP4.Entities;
+using Entities;
 
-namespace TP4.Logic
+namespace Logic
 {
     public class SuppliersLogic : BaseLogic, IABMLogic<Suppliers>
     {

@@ -5,8 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using TP4.Entities;
-using TP4.Logic;
+using Entities;
 using WebApi.Models.Request;
 using WebApi.Models.Response;
 

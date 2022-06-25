@@ -1,10 +1,10 @@
-using TP4.Entities;
+using Entities;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 
-namespace TP4.Data
+namespace Data
 {
     public partial class NorthwindContext : DbContext
     {
