@@ -17,7 +17,7 @@ export class ShipperAddComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.fb.group ({
       companyName: new FormControl ('',Validators.required),
-      phone: new FormControl ('',Validators.required)
+      phone: new FormControl ('')
     });
   }
 
