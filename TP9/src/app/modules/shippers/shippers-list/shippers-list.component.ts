@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableModule} from '@angular/material/table';
-
-export interface shippers {
-  id: Int32List;
-  companyName: string;
-  phone: string;
-}
+import { Shipper } from '../models/shipper';
+import { ShippersService } from '../services/shippers.service';
 
 @Component({
   selector: 'app-shippers-list',
@@ -14,9 +10,14 @@ export interface shippers {
 })
 export class ShippersListComponent implements OnInit {
 
+  shippersList: Shipper[] = [];
+
+  constructor( private shippersService: ShippersService){}
+
   ngOnInit(): void {
-    //displayedColumns: string[] = ['id', 'companyName', 'phone'];
-    //dataSource = ELEMENT_DATA;
+    this.shippersService.getShippers().subscribe(response => {
+      this.shippersList = response
+    });
   }
 
 }

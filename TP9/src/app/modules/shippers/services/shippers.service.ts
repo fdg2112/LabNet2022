@@ -15,4 +15,9 @@ export class ShippersService {
     let endpoint = "api/Shippers"
     return this.http.post(environment.shipper + endpoint, request);
   }
+
+  getShippers() : Observable<any>{
+    let endpoint = "api/Shippers"
+    return this.http.get(environment.shipper + endpoint);
+  }
 }
