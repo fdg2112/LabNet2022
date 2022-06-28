@@ -12,7 +12,7 @@ using System.Web.Http.Cors;
 
 namespace WebApi.Controllers
 {
-    [EnableCors(origins: "http://localhost:4200/", headers: "*", methods: "*")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class SuppliersController : ApiController
     {
 

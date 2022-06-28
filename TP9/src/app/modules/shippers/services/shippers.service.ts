@@ -20,10 +20,10 @@ export class ShippersService {
     let endpoint = "api/Shippers"
     return this.http.get(environment.shipper + endpoint);
   }
-
-  updateShipper(id: string) : Observable<Shipper>{
-    let endpoint = "api/Shippers/"
-    return this.http.post<Shipper>(environment.shipper + endpoint + id);
+  
+  updateShipper(request: Shipper) : Observable<any>{
+    let endpoint = "api/Shippers"
+    return this.http.put(environment.shipper + endpoint, request);
   }
 
   deleteShipper(id: string) : Observable<number>{

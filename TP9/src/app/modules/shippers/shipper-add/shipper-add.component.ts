@@ -23,8 +23,8 @@ export class ShipperAddComponent implements OnInit {
 
   addShipper(){
     var shipper = new Shipper();
-    shipper.companyName = this.form.get('companyName')?.value;
-    shipper.phone = this.form.get('phone')?.value;
+    shipper.CompanyName = this.form.get('companyName')?.value;
+    shipper.Phone = this.form.get('phone')?.value;
     this.shipperService.createShipper(shipper).subscribe(res => {
       alert('Proveedor Agregado!' + res);
       this.form.reset();

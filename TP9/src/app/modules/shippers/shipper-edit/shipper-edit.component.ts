@@ -15,13 +15,11 @@ export class ShipperEditComponent implements OnInit {
   constructor( private readonly fb: FormBuilder, private shipperService: ShippersService) { }
 
   ngOnInit(): void {
-    this.form = this.fb.group ({
-      companyName: new FormControl ('',Validators.required),
-      phone: new FormControl ('')
-    });
+    
   }
 
   editShipper(){
     
   }
+
 }
