@@ -20,4 +20,8 @@ export class ShippersListComponent implements OnInit {
     });
   }
 
+  removeShipper(id: string){
+    this.shippersService.deleteShipper(id);
+  }
+
 }

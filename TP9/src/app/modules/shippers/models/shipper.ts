@@ -1,5 +1,5 @@
 export class Shipper {
-    id: number = 0;
+    id: string = '';
     companyName: string = '';
     phone: string = '';
 }

@@ -10,20 +10,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr *ngFor='let s of shippersList | async'>
           <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
+          <td>{{s.id}}</td>
+          <td>{{s.companyName}}</td>
+          <td>{{s.phone}}</td>
+          <td><button type="button" (click)='editShipper(s.id)'>Edit</button></td>
+          <td><button type="button" (click)='removeShipper(s.id)'>Delete</button></td>
         </tr>
       </tbody>
     </table>
