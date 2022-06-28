@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ShippersListComponent } from './shippers-list/shippers-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ShipperAddComponent } from './shipper-add/shipper-add.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { ShipperAddComponent } from './shipper-add/shipper-add.component';
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ]
 })
 export class ShippersModule { }

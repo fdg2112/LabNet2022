@@ -8,9 +8,11 @@ using System.Web.Http;
 using Entities;
 using WebApi.Models.Request;
 using WebApi.Models.Response;
+using System.Web.Http.Cors;
 
 namespace WebApi.Controllers
 {
+    [EnableCors(origins: "http://localhost:4200/", headers: "*", methods: "*")]
     public class ShippersController : ApiController
     {
 
@@ -36,6 +38,7 @@ namespace WebApi.Controllers
             }
         }
 
+        [EnableCors(origins: "http://localhost:4200/shippers-add", headers: "*", methods: "*")]
         // POST: api/Shippers
         public IHttpActionResult InsertShipper([FromBody] ShippersRequest shippersRequest)
         {

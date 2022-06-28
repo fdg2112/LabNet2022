@@ -15,8 +15,8 @@ export interface shippers {
 export class ShippersListComponent implements OnInit {
 
   ngOnInit(): void {
-    displayedColumns: string[] = ['id', 'companyName', 'phone'];
-    dataSource = ELEMENT_DATA;
+    //displayedColumns: string[] = ['id', 'companyName', 'phone'];
+    //dataSource = ELEMENT_DATA;
   }
 
 }
