@@ -1,6 +1,6 @@
 <div class="container">
   <div class="col">
-    <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal"> Agregar Nuevo</button>
+    <button type="button" class="btn btn-outline-dark" > Agregar Nuevo</button>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -10,17 +10,26 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor='let s of shippersList | async'>
-          <th scope="row">1</th>
-          <td>{{s.id}}</td>
-          <td>{{s.companyName}}</td>
-          <td>{{s.phone}}</td>
-          <td><button type="button" (click)='editShipper(s.id)'>Edit</button></td>
-          <td><button type="button" (click)='removeShipper(s.id)'>Delete</button></td>
+        <tr *ngFor="let s of shippersList">
+          <th scope="row">{{s.ShipperID}}</th>
+          <td>{{s.CompanyName}}</td>
+          <td>{{s.Phone}}</td>
+          <td><button type="button" (click)="openModalShipper(s)">Edit</button></td>
+          <td><button type="button" (click)="removeShipper(s.ShipperID)">Delete</button></td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
+
+<ng-template #editmodal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Editar Proveedor</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <app-shipper-edit></app-shipper-edit>
+  </div>
+</ng-template>
 
 
