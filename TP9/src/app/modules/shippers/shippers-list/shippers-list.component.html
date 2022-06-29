@@ -14,7 +14,7 @@
           <th scope="row">{{s.ShipperID}}</th>
           <td>{{s.CompanyName}}</td>
           <td>{{s.Phone}}</td>
-          <td><button type="button" (click)="openModalShipper(s)">Edit</button></td>
+          <td><button type="button" (click)="openModalShipper('app-shipper-edit',s)">Edit</button></td>
           <td><button type="button" (click)="removeShipper(s.ShipperID)">Delete</button></td>
         </tr>
       </tbody>
@@ -22,14 +22,21 @@
   </div>
 </div>
 
-<ng-template #editmodal>
+<ng-template #modalMensaje let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Editar Proveedor</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+      <h4 class="modal-title">
+          <span>{{shipper.CompanyName}}</span>
+      </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
   </div>
   <div class="modal-body">
-    <app-shipper-edit></app-shipper-edit>
+      <app-shipper-edit></app-shipper-edit>
   </div>
-</ng-template>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template> 
 
 

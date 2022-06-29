@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Shipper } from '../models/shipper';
 import { ShippersService } from '../services/shippers.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -11,14 +12,20 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 })
 export class ShippersListComponent implements OnInit {
 
-  @ViewChild('myModal') myModal;
+  shipper!: Shipper;
+
+  @ViewChild('modalShipper') modal!: ElementRef;
 
   shippersList: Shipper[] = [];
 
-  constructor( private shippersService: ShippersService){}
+  constructor( private shippersService: ShippersService, private activatedRoute: ActivatedRoute, private modalShipper: NgbModal){}
 
   ngOnInit(): void {
     this.getAllShippers();
+    this.activatedRoute.data.subscribe(({ shipper }) => {
+      this.shipper = shipper;
+      this.openModalShipper(this.modal ,shipper);
+  });
   }
 
 
@@ -35,8 +42,9 @@ export class ShippersListComponent implements OnInit {
     });
   }
 
-  openModalShipper(shipper: Shipper){
-    this.myModal.nativeElement.className = 'modal fade show';
+  openModalShipper(modal, shipper: Shipper){
+    this.shipper = shipper;
+    this.modalShipper.open(modal);
   }
 
 
