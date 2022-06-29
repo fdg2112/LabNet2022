@@ -1,26 +1,49 @@
-<div class="container">
-  <div class="col">
-    <button type="button" class="btn btn-outline-dark" > Agregar Nuevo</button>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Nombre de la Empresa</th>
-          <th scope="col">Teléfono</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let s of shippersList">
-          <th scope="row">{{s.ShipperID}}</th>
-          <td>{{s.CompanyName}}</td>
-          <td>{{s.Phone}}</td>
-          <td><button type="button" (click)="openModalShipper('app-shipper-edit',s)">Edit</button></td>
-          <td><button type="button" (click)="removeShipper(s.ShipperID)">Delete</button></td>
-        </tr>
-      </tbody>
-    </table>
+<div class="d-flex h-100 text-center text-white bg-dark">
+  <div class="cover-container d-flex w-100 p-3 mx-auto flex-column">
+    <header>
+      <div>
+        <h3 class="float-md-start mb-0">Listado de Proveedores</h3>
+        <nav class="nav nav-masthead justify-content-center float-md-end">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </nav>
+      </div>
+    </header>
+
+    <body>
+      <main class="px-3">
+        <div class="container">
+          <div class="col">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nombre de la Empresa</th>
+                  <th scope="col">Teléfono</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let s of shippersList">
+                  <th scope="row">{{s.ShipperID}}</th>
+                  <td>{{s.CompanyName}}</td>
+                  <td>{{s.Phone}}</td>
+                  <!-- <td><button type="button" (click)="openModalShipper('app-shipper-edit',s)">Edit</button></td> -->
+                  <td><button type="button" (click)="removeShipper(s.ShipperID)">Delete</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col">
+            <button type="button" class="btn btn-outline-dark" > Agregar Nuevo</button>
+          </div>
+        </div>
+      </main>
+    </body>
+
+    
   </div>
 </div>
+
+
 
 <ng-template #modalMensaje let-modal>
   <div class="modal-header">

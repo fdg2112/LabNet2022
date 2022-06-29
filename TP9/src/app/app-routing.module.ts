@@ -5,7 +5,7 @@ import { ShipperAddComponent } from './modules/shippers/shipper-add/shipper-add.
 import { ShippersListComponent } from './modules/shippers/shippers-list/shippers-list.component';
 
 const routes: Routes = [{
-  path: 'home',
+  path: '',
   component: HomeComponent
 },
 {

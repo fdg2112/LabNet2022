@@ -24,7 +24,7 @@ export class ShippersListComponent implements OnInit {
     this.getAllShippers();
     this.activatedRoute.data.subscribe(({ shipper }) => {
       this.shipper = shipper;
-      this.openModalShipper(this.modal ,shipper);
+      //this.openModalShipper(this.modal ,shipper);
   });
   }
 
@@ -42,10 +42,10 @@ export class ShippersListComponent implements OnInit {
     });
   }
 
-  openModalShipper(modal, shipper: Shipper){
-    this.shipper = shipper;
-    this.modalShipper.open(modal);
-  }
+  // openModalShipper(modal: ElementRef, shipper: Shipper){
+  //   this.shipper = shipper;
+  //   this.modalShipper.open(modal);
+  // }
 
 
 
