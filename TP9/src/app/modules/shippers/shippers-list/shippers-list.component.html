@@ -33,16 +33,17 @@
             </table>
           </div>
           <div class="col">
-            <button type="button" class="btn btn-outline-dark" > Agregar Nuevo</button>
+            <button type="button" class="btn btn-outline-dark" (click)="openModalAdd()"> Agregar Nuevo</button>
           </div>
         </div>
       </main>
     </body>
-
-    
   </div>
 </div>
 
+<div class= "" *ngIf="modalSwitch == true">
+  <app-shipper-add></app-shipper-add>
+</div>
 
 
 <ng-template #modalMensaje let-modal>

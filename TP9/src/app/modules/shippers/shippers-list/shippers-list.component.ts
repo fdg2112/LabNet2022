@@ -16,6 +16,8 @@ export class ShippersListComponent implements OnInit {
 
   @ViewChild('modalShipper') modal!: ElementRef;
 
+  modalSwitch!: boolean;
+
   shippersList: Shipper[] = [];
 
   constructor( private shippersService: ShippersService, private activatedRoute: ActivatedRoute, private modalShipper: NgbModal){}
@@ -40,6 +42,10 @@ export class ShippersListComponent implements OnInit {
     this.shippersService.getShippers().subscribe(response => {
       this.shippersList = response
     });
+  }
+
+  openModalAdd(){
+      this.modalSwitch=true;
   }
 
   // openModalShipper(modal: ElementRef, shipper: Shipper){
