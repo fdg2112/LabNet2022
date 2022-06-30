@@ -1,6 +1,5 @@
 import { Component, Output, OnInit, EventEmitter } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Shipper } from '../models/shipper';
 import { ShippersService } from '../services/shippers.service';
 
@@ -16,13 +15,17 @@ export class ShipperAddComponent implements OnInit {
 
   public form!: FormGroup;
 
-  constructor( private readonly fb: FormBuilder, private shipperService: ShippersService, private router: Router) { }
+  constructor( private readonly fb: FormBuilder, private shipperService: ShippersService) { }
 
   ngOnInit(): void {
     this.form = this.fb.group ({
-      companyName: new FormControl ('',[Validators.required,Validators.maxLength(40)]),
-      phone: new FormControl ('',Validators.maxLength(24))
+      companyName: new FormControl ('',[Validators.required,Validators.maxLength(60)]),
+      phone: new FormControl ('',[Validators.maxLength(24),Validators.pattern('[0-9]+$')])
     });
+  }
+
+  get f(){
+    return this.form.controls;
   }
 
   addShipper(){
@@ -34,5 +37,6 @@ export class ShipperAddComponent implements OnInit {
       this.form.reset();
     })
   }
+
 
 }

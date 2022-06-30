@@ -27,11 +27,9 @@ export class ShippersListComponent implements OnInit {
   }
 
   removeShipper(id: string){
-    if (confirm("Seguro de eliminar?") == true) {
-      this.shippersService.deleteShipper(id).subscribe(() => {
+    this.shippersService.deleteShipper(id).subscribe(() => {
       this.getAllShippers();
     });
-    }
   }
 
   getAllShippers(){

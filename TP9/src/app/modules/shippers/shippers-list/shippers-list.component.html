@@ -26,7 +26,8 @@
                   <td>{{s.CompanyName}}</td>
                   <td>{{s.Phone}}</td>
                   <td><button type="button" (click)="openEdit(modalEdit,s)"> Editar </button></td>
-                  <td><button type="button" (click)="removeShipper(s.ShipperID)">Borrar</button></td>
+                  <!-- <td><button type="button" (click)="removeShipper(s.ShipperID)">Borrar</button></td> -->
+                  <td><button type="button" (click)="openEdit(modalDelete,s)">Borrar</button></td>
                 </tr>
               </tbody>
             </table>
@@ -64,3 +65,16 @@
   </div>
 </ng-template>
 
+<ng-template #modalDelete let-modal>
+  <div class="modal-header">
+    <h2 class="modal-title" id="modal-basic-title">Seguro desea eliminar?</h2>
+  </div>
+  <div class="modal-cancel-body">
+    <div class="modal-col">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Cancelar</button>
+    </div>
+    <div class="modal-col">
+      <button type="button" class="btn btn-outline-dark" (click)="removeShipper(shipper.ShipperID);modal.close()">Confirmar</button>
+    </div>
+  </div>
+</ng-template>

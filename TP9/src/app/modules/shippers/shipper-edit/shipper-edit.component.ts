@@ -21,8 +21,8 @@ export class ShipperEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group ({
-      companyName: new FormControl ('',[Validators.required,Validators.maxLength(40)]),
-      phone: new FormControl ('',Validators.maxLength(24))
+      companyName: new FormControl ('',[Validators.required,Validators.maxLength(60)]),
+      phone: new FormControl ('',[Validators.maxLength(24),Validators.pattern('[0-9]+$')])
     });
     if (this.shipper) {
       this.form.patchValue({
@@ -32,6 +32,10 @@ export class ShipperEditComponent implements OnInit {
     }
   }
 
+  get f(){
+    return this.form.controls;
+  }
+  
   editShipper(){
     var shipperM = new Shipper();
     shipperM.CompanyName = this.form.get('companyName')?.value;
