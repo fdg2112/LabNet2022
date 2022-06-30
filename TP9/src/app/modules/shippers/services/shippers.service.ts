@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Shipper } from '../models/shipper';
-import { EventEmitter } from 'stream';
 
 @Injectable({
   providedIn: 'root'
@@ -24,9 +23,9 @@ export class ShippersService {
     return this.http.get(environment.shipper + endpoint);
   }
   
-  updateShipper(request: Shipper) : Observable<any>{
-    let endpoint = "api/Shippers"
-    return this.http.put(environment.shipper + endpoint, request);
+  updateShipper(id: string, request: Shipper) : Observable<any>{
+    let endpoint = "api/Shippers/"
+    return this.http.post(environment.shipper + endpoint + id, request);
   }
 
   deleteShipper(id: string) : Observable<number>{

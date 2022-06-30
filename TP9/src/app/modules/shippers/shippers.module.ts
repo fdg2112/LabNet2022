@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ShipperAddComponent } from './shipper-add/shipper-add.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ShipperEditComponent } from './shipper-edit/shipper-edit.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -13,10 +14,12 @@ import { ShipperEditComponent } from './shipper-edit/shipper-edit.component';
     ShipperAddComponent,
     ShipperEditComponent,
   ],
+  entryComponents: [ShipperAddComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ]
 })
 export class ShippersModule { }

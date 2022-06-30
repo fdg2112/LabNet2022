@@ -1,8 +1,9 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Shipper } from '../models/shipper';
 import { ShippersService } from '../services/shippers.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { ActivatedRoute } from '@angular/router';
+
 
 
 @Component({
@@ -13,46 +14,57 @@ import { ActivatedRoute } from '@angular/router';
 export class ShippersListComponent implements OnInit {
 
   shipper!: Shipper;
-
-  @ViewChild('modalShipper') modal!: ElementRef;
-
-  modalSwitch!: boolean;
-
   shippersList: Shipper[] = [];
+  closeResult: string = '';
 
-  constructor( private shippersService: ShippersService, private activatedRoute: ActivatedRoute, private modalShipper: NgbModal){}
+  constructor( private shippersService: ShippersService, private activatedRoute: ActivatedRoute, private router: Router, private modalService: NgbModal){}
 
   ngOnInit(): void {
     this.getAllShippers();
     this.activatedRoute.data.subscribe(({ shipper }) => {
       this.shipper = shipper;
-      //this.openModalShipper(this.modal ,shipper);
-  });
+    });
   }
-
 
   removeShipper(id: string){
-    this.shippersService.deleteShipper(id).subscribe(() => {
+    if (confirm("Seguro de eliminar?") == true) {
+      this.shippersService.deleteShipper(id).subscribe(() => {
       this.getAllShippers();
-    })
+    });
+    }
   }
 
-  
   getAllShippers(){
     this.shippersService.getShippers().subscribe(response => {
       this.shippersList = response
     });
   }
 
-  openModalAdd(){
-      this.modalSwitch=true;
+  openAdd(content:any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
   }
 
-  // openModalShipper(modal: ElementRef, shipper: Shipper){
-  //   this.shipper = shipper;
-  //   this.modalShipper.open(modal);
-  // }
+  openEdit(content:any,shipper: Shipper) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+    this.shipper = shipper;
+  } 
 
-
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
 
 }

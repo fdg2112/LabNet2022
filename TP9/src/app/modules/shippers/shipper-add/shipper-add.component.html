@@ -1,36 +1,13 @@
-<div class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Agregar Proveedor</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <form [formGroup]="form">
-                            <div class="form-group">
-                                <label class="col-form-label">Nombre de la Empresa</label>
-                                <input formControlName="companyName" type="text" class="formControl" placeholder="Nombre de la Empresa">
-                            </div>
-                            <div class="form-group">
-                                <label class="col-form-label">Teléfono</label>
-                                <input formControlName="phone" type="text" class="formControl" placeholder="Teléfono">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" (click)="addShipper()">Agregar</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
-        </div>
-      </div>
+<div class="container">
+  <form [formGroup]="form">
+    <div class="form-group">
+      <label class="col-form-label">Nombre de la Empresa</label>
+      <input formControlName="companyName" type="text" class="formControl" placeholder="Nombre de la Empresa">
     </div>
-  </div>
-
-
+    <div class="form-group">
+      <label class="col-form-label">Teléfono</label>
+      <input formControlName="phone" type="text" class="formControl" placeholder="Teléfono">
+    </div>
+  </form>
+  <button type="button" class="btn-outline-dark" (click)="addShipper()">Agregar</button>
+</div>

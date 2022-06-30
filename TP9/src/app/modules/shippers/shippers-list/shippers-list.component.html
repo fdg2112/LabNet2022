@@ -8,7 +8,6 @@
         </nav>
       </div>
     </header>
-
     <body>
       <main class="px-3">
         <div class="container">
@@ -26,14 +25,14 @@
                   <th scope="row">{{s.ShipperID}}</th>
                   <td>{{s.CompanyName}}</td>
                   <td>{{s.Phone}}</td>
-                  <!-- <td><button type="button" (click)="openModalShipper('app-shipper-edit',s)">Edit</button></td> -->
-                  <td><button type="button" (click)="removeShipper(s.ShipperID)">Delete</button></td>
+                  <td><button type="button" (click)="openEdit(modalEdit,s)"> Editar </button></td>
+                  <td><button type="button" (click)="removeShipper(s.ShipperID)">Borrar</button></td>
                 </tr>
               </tbody>
             </table>
           </div>
           <div class="col">
-            <button type="button" class="btn btn-outline-dark" (click)="openModalAdd()"> Agregar Nuevo</button>
+            <button type="button" class="btn btn-outline-dark" (click)="openAdd(modalAdd)"> Agregar Nuevo</button>
           </div>
         </div>
       </main>
@@ -41,26 +40,27 @@
   </div>
 </div>
 
-<div class= "" *ngIf="modalSwitch == true">
-  <app-shipper-add></app-shipper-add>
-</div>
-
-
-<ng-template #modalMensaje let-modal>
+<ng-template #modalEdit let-modal>
   <div class="modal-header">
-      <h4 class="modal-title">
-          <span>{{shipper.CompanyName}}</span>
-      </h4>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-          <span aria-hidden="true">&times;</span>
-        </button>
+    <h2 class="modal-title" id="modal-basic-title">Editar Proveedor</h2>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
   </div>
   <div class="modal-body">
-      <app-shipper-edit></app-shipper-edit>
+      <app-shipper-edit (save)="getAllShippers();modal.close();" [shipper]="shipper"></app-shipper-edit>
   </div>
-  <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-  </div>
-</ng-template> 
+</ng-template>
 
+<ng-template #modalAdd let-modal>
+  <div class="modal-header">
+    <h2 class="modal-title" id="modal-basic-title">Agregar Proveedor</h2>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <app-shipper-add (save)="getAllShippers();modal.close();"></app-shipper-add>
+  </div>
+</ng-template>
 
