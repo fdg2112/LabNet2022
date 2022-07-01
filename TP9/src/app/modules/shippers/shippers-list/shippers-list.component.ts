@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Shipper } from '../models/shipper';
 import { ShippersService } from '../services/shippers.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-
 
 
 @Component({
@@ -17,7 +16,7 @@ export class ShippersListComponent implements OnInit {
   shippersList: Shipper[] = [];
   closeResult: string = '';
 
-  constructor( private shippersService: ShippersService, private activatedRoute: ActivatedRoute, private router: Router, private modalService: NgbModal){}
+  constructor( private shippersService: ShippersService, private activatedRoute: ActivatedRoute, private modalService: NgbModal){}
 
   ngOnInit(): void {
     this.getAllShippers();
@@ -27,9 +26,10 @@ export class ShippersListComponent implements OnInit {
   }
 
   removeShipper(id: string){
-    this.shippersService.deleteShipper(id).subscribe(() => {
-      this.getAllShippers();
-    });
+    this.shippersService.deleteShipper(id).subscribe(
+      () => {this.getAllShippers()},
+      () => alert("No se ha podido eliminar") //falta implementar HttpInterceptor para manejar el error 400
+      );
   }
 
   getAllShippers(){
@@ -46,7 +46,7 @@ export class ShippersListComponent implements OnInit {
     });
   }
 
-  openEdit(content:any,shipper: Shipper) {
+  openEdit(content:any, shipper: Shipper) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
